@@ -23,9 +23,9 @@ pdf(paste0('../Result/promoter_genebody.', args[1], '.default.k.liger.gene.loadi
 gene_loadings <- plotGeneLoadings(sdata, do.spec.plot = FALSE, return.plots = TRUE)
 dev.off()
 
-write.table(
-  as.data.frame(sdata@reductions$iNMF@cell.embeddings),
-  file=paste0('../Result/promoter_genebody.', args[1], '.default.k.liger.umap.csv'),
-  sep=',',
-  quote=FALSE,
-)
+# write.table(
+#   as.data.frame(sdata@reductions$iNMF@cell.embeddings),
+#   file=paste0('../Result/promoter_genebody.', args[1], '.default.k.liger.umap.csv'),
+#   sep=',',
+#   quote=FALSE,
+# )

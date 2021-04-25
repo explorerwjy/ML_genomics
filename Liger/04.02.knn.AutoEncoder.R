@@ -38,10 +38,10 @@ p <- ggplot(to.plot, aes(x=X, y=Y, col=predict.cell.type)) +
 ggsave(paste0(args[1], '.spatial.pdf'), plot = p, width = 7, height = 4.5)
 
 # ATAC
-scATAC_cell_names <- read.delim('../scATAC_raw/GSM2668117_e11.5.nchrM.merge.sel_cell.xgi.txt.gz', header = F)
-scATAC_mat <- as.matrix(read.csv("../scATAC_raw/E11.5/E11.5.cell.tf.mat.csv", row.names = 1))
-for (i in )
-predict.ATAC <- knn(latent[match(spatialRNA.cell.names, rownames(latent)),],
-                    scATAC_mat[,i],
-                    latent[match(rownames(scATAC_mat), rownames(latent)),],
-                    10)
+# scATAC_cell_names <- read.delim('../scATAC_raw/GSM2668117_e11.5.nchrM.merge.sel_cell.xgi.txt.gz', header = F)
+# scATAC_mat <- as.matrix(read.csv("../scATAC_raw/E11.5/E11.5.cell.tf.mat.csv", row.names = 1))
+# for (i in )
+# predict.ATAC <- knn(latent[match(spatialRNA.cell.names, rownames(latent)),],
+#                     scATAC_mat[,i],
+#                     latent[match(rownames(scATAC_mat), rownames(latent)),],
+#                     10)
