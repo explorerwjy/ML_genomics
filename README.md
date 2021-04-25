@@ -15,4 +15,7 @@ Or you can modify the code in it.
 
 For Autoencoder results, please go to Autoencoder/ folder and run main.py and main_PBMC.py
 
+For downstream analysis, such as the figures, KNN, Phenograph, please run post_processing.ipynb
+
 For CNN results, please go to src/ and read the Readme.md there.
+
