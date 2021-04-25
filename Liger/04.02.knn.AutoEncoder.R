@@ -38,10 +38,20 @@ p <- ggplot(to.plot, aes(x=X, y=Y, col=predict.cell.type)) +
 ggsave(paste0(args[1], '.spatial.pdf'), plot = p, width = 7, height = 4.5)
 
 # ATAC
-# scATAC_cell_names <- read.delim('../scATAC_raw/GSM2668117_e11.5.nchrM.merge.sel_cell.xgi.txt.gz', header = F)
-# scATAC_mat <- as.matrix(read.csv("../scATAC_raw/E11.5/E11.5.cell.tf.mat.csv", row.names = 1))
-# for (i in )
-# predict.ATAC <- knn(latent[match(spatialRNA.cell.names, rownames(latent)),],
-#                     scATAC_mat[,i],
-#                     latent[match(rownames(scATAC_mat), rownames(latent)),],
-#                     10)
+scATAC_cell_names <- read.delim('../scATAC_raw/GSM2668117_e11.5.nchrM.merge.sel_cell.xgi.txt.gz', header = F)
+scATAC_mat <- as.matrix(read.csv("./E11.5.cell.tf.mat.csv", row.names = 1))
+dir.create("ATAC.predict/")
+for (i in 1:dim(scATAC_mat)[2]) {
+  predict.ATAC <- knn(latent[match(spatialRNA.cell.names, rownames(latent)),],
+                      scATAC_mat[,i],
+                      latent[match(rownames(scATAC_mat), rownames(latent)),],
+                      10)
+  to.plot <- data.frame(X=spatialRNA.coordinate[,1],
+                        Y=-spatialRNA.coordinate[,2],
+                        predict.ATAC=log(predict.ATAC))
+  mid<-mean(to.plot$predict.ATAC)
+  p <- ggplot(to.plot, aes(x=X, y=Y, col=predict.ATAC)) +
+    geom_point(alpha=1) + scale_color_gradient2(midpoint=mid, low="blue", mid="white",
+                                                high="red", space ="Lab" )
+  ggsave(paste0("ATAC.predict/", colnames(scATAC_mat)[i], '.spatial.pdf'), plot = p, width = 7, height = 4.5)
+}
