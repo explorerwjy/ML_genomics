@@ -1,0 +1,8 @@
+1. Module class is to implement a customized FC network, a Encoder, a Decoder
+    Finished
+
+2. Dataloader class is to create data loader for scRNA and scATAC seq data
+    Need a torch.utils.data.Dataset object
+    Output should be a mixed data loader, with different datasets mixed in output
+
+4. main function is to train.
