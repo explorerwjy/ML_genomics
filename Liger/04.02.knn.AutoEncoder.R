@@ -49,7 +49,7 @@ for (i in 1:dim(scATAC_mat)[2]) {
   to.plot <- data.frame(X=spatialRNA.coordinate[,1],
                         Y=-spatialRNA.coordinate[,2],
                         predict.ATAC=log(predict.ATAC))
-  mid<-mean(to.plot$predict.ATAC)
+  mid<-median(to.plot$predict.ATAC)
   p <- ggplot(to.plot, aes(x=X, y=Y, col=predict.ATAC)) +
     geom_point(alpha=1) + scale_color_gradient2(midpoint=mid, low="blue", mid="white",
                                                 high="red", space ="Lab" )
